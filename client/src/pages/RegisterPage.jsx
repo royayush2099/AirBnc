@@ -1,21 +1,27 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios'
+import axios from 'axios';
 
 const RegisterPage = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  function registerUser(ev){
-    ev.preventDefault();// need to learn this
- axios.post('/register',{
-  name,
-  email,
-  password,
- })
+
+  async function registerUser(ev) {
+    ev.preventDefault(); // prevents the default form submission behavior
+    try {
+      await axios.post('/register', {
+        name,
+        email,
+        password,
+      });
+      alert('Registration successful. Now you can log in');
+    } catch (e) {
+      alert('Registration failed. Please try again later');
+    }
   }
 
-  // Common styles for input fields
+  // Common styles for input fields (moved outside of registerUser)
   const inputStyle = 'w-full p-2 border border-gray-300 rounded mb-4';
 
   return (
