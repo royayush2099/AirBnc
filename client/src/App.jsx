@@ -26,7 +26,7 @@ function App() {
 <Route path='/login' element={<LoginPage/>}/>
 <Route path='/register' element={<RegisterPage/>}/>
 <Route path='/account/:subpage?' element={<AccountPage/>}/> {/*we used subpages to give dynamic routes here such as bookings and places */}
-
+<Route path='/account/:subpage/:action' element={<AccountPage/>}/>
       </Route>
 
     </Routes>
